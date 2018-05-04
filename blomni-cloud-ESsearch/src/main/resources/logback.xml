@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+	<property name="rootPath" value="/opt/logs/spring/blomni-cloud-order" />
+	<property name="baseFile" value="cloud_order"></property>
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%date{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level [%logger{60}] %msg %n</pattern>
+        </encoder>
+    </appender>
+    
+	<!-- logstash -->
+	 <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">  
+        <destination>localhost:9250</destination>  
+        <!-- encoder必须配置,有多种可选 -->  
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" /> 
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">  
+            <level>ERROR</level>  
+            <onMatch>ACCEPT</onMatch>    
+            <onMismatch>DENY</onMismatch>    
+        </filter> 
+    </appender> 
+    
+ 
+    <logger name="org.springframework" additivity="false">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="org.mybatis.spring" level="ERROR" />
+	
+	<logger name="com.ibatis" level="INFO" additivity="false"/>     
+
+	<logger name="java.sql" level="INFO" />  
+	
+	<root level="INFO">
+		<appender-ref ref="console" />
+		<appender-ref ref="LOGSTASH" />
+	</root>
+
+    
+    <logger name="org.apache.commons">
+		<level value="INFO" />
+	</logger>
+</configuration>

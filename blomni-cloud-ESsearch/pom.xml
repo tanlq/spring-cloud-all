@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.blomini</groupId>
+	<artifactId>blomni-cloud-ESsearch</artifactId>
+	<version>1.0.0</version>
+	<name>blomni-cloud-ESsearch</name>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.M1</version>
+		<relativePath />
+	</parent>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Finchley.M1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency> 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+         <!-- 添加 web 应用的依赖 -->
+		<dependency>
+			<groupId> org.springframework.boot </groupId>
+			<artifactId> spring-boot-starter-web </artifactId>
+		</dependency>
+		<!-- 添加 spring-data-elasticsearch的依赖 -->
+		<dependency>
+			<groupId> org.springframework.boot </groupId>
+			<artifactId> spring-boot-starter-data-elasticsearch </artifactId>
+		</dependency>
+		
+		<dependency>  
+           <groupId>org.elasticsearch</groupId>  
+           <artifactId>elasticsearch</artifactId>  
+           <!-- <version>6.0.0</version> -->  
+       </dependency>  
+		
+		<dependency>  
+           <groupId>org.springframework.data</groupId>  
+           <artifactId>spring-data-elasticsearch</artifactId>  
+       </dependency>
+		<!--  jest es 管理 -->
+		<dependency>  
+            <groupId>io.searchbox</groupId>  
+            <artifactId>jest</artifactId>  
+        </dependency>  
+        <dependency>  
+            <groupId>net.java.dev.jna</groupId>  
+            <artifactId>jna</artifactId>  
+        </dependency>  
+		
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.6</version>
+		</dependency>
+		
+		<dependency>  
+		    <groupId>net.logstash.logback</groupId>  
+		    <artifactId>logstash-logback-encoder</artifactId>  
+		    <version>4.11</version> 
+		</dependency>
+	</dependencies>
+</project>
